@@ -91,7 +91,7 @@ first attempt.
 
 ## Before publishing
 
-Three things need the author's decision, and are deliberately left undone here.
+Four things need the author's decision, and are deliberately left undone here.
 
 1. **A licence.** Apache 2.0 matches Mathlib and is the path of least resistance if the `contrib/`
    files are ever offered upstream.
@@ -99,3 +99,7 @@ Three things need the author's decision, and are deliberately left undone here.
    attribution for the Lean development generally.
 3. **The chapter.** This repository cites it but does not include it. If it is not yet public,
    the citation should say where it will appear.
+4. **The commit authorship.** The initial commit is authored `David V. Feldman <dvfinnh@gmail.com>`,
+   taken from the companion report. To change it:
+   `git commit --amend --author="Name <email>"`, or reset the whole history with
+   `git -c user.name=… -c user.email=… commit --amend --reset-author --no-edit`.
