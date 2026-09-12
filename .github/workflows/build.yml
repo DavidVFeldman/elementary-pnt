@@ -1,0 +1,31 @@
+name: build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+          test: false
+          lint: false
+      - name: Axiom audit
+        run: |
+          lake env lean Audit.lean > audit.txt
+          cat audit.txt
+          if grep -q "sorryAx" audit.txt; then echo "::error::sorryAx in audit"; exit 1; fi
+          if grep -vE "propext|Classical.choice|Quot.sound|does not depend" audit.txt | grep -q "depends on axioms"; then
+            echo "::error::nonstandard axiom in audit"; exit 1; fi
+      - name: No sorry, admit, axiom, native_decide
+        run: |
+          ! grep -rnwE "sorry|admit|native_decide" --include=*.lean ElementaryPNT contrib Audit.lean
+          ! grep -rnE "^[[:space:]]*axiom[[:space:]]" --include=*.lean ElementaryPNT contrib
+      - uses: actions/upload-artifact@v4
+        with:
+          name: axiom-audit
+          path: audit.txt

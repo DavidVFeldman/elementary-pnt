@@ -1,0 +1,12 @@
+name = "ElementaryPNT"
+defaultTargets = ["ElementaryPNT", "Audit"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+
+[[lean_lib]]
+name = "ElementaryPNT"
+
+[[lean_lib]]
+name = "Audit"
