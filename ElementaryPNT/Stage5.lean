@@ -38,7 +38,7 @@ theorem psi_asymptotic_of_S (hS : Tendsto (fun x : ℝ => S x / x) atTop (𝓝 0
 Route: `ψ` and Chebyshev's `θ` differ by `O(√x log² x)`, and
 `Chebyshev.primeCounting_sub_theta_div_log_isBigO` relates `π` to `θ/log`. Mathlib supplies both
 links; the chapter's §"The equivalence" gives the classical partial-summation argument if they do
-not suffice. Round 8's `selbergPsi_eq_chebyshevPsi` identifies this file's `psi` with Mathlib's. -/
+not suffice. `Chebyshev.psi_eq_chebyshevPsi` identifies this file's `psi` with Mathlib's. -/
 theorem primeCounting_asymptotic_of_psi
     (hpsi : Tendsto (fun x : ℝ => psi x / x) atTop (𝓝 1)) :
     Tendsto (fun n : ℕ => (Nat.primeCounting n : ℝ) / ((n : ℝ) / Real.log n)) atTop (𝓝 1) := by
@@ -48,5 +48,4 @@ theorem primeCounting_asymptotic_of_psi
   intro n
   simp
 
-open Classical in
 end SelbergPNT

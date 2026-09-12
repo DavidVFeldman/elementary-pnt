@@ -132,5 +132,4 @@ theorem psi_asymptotic : Tendsto (fun x : ℝ => psi x / x) atTop (𝓝 1) := by
   exact psi_asymptotic_of_S
     (S_div_tendsto_zero_of_smoothing (smoothing_tr_of_smoothing_abs W_le_average))
 
-open Classical in
 end SelbergPNT
