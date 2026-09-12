@@ -1,10 +1,13 @@
 /-
-ElementaryPNT.Chebyshev — auxiliary development for `ElementaryPNT.yshev`.
+ElementaryPNT.Chebyshev — the identity `log m! = ∑_{d ≤ m} Λ(d)⌊m/d⌋`, the Chebyshev lower
+bound built from it, and the identification of this development's `psi` with Mathlib's
+`Chebyshev.psi`.
 
 Part of a formalization of the elementary (Erdős–Selberg) proof of the prime number theorem,
 following D. V. Feldman, "1896/1949 — The Elementary Proof of the Prime Number Theorem".
 See the repository README for the correspondence between the chapter and these files.
 -/
+import Mathlib
 import ElementaryPNT.Defs
 
 open Filter Topology Asymptotics Finset ArithmeticFunction
